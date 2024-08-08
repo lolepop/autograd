@@ -31,7 +31,7 @@ for i in range(5):
     y_guess = equation(testsample)
     
     # train
-    train_loss = NLLLoss(y_guess[:-1], tokenised_train_values[sample_index][1:])
+    train_loss = NLLLoss([y_guess[:-1]], [tokenised_train_values[sample_index][1:]], multi=True)
     optimiser.step()
     
     print(train_loss)
@@ -39,7 +39,7 @@ for i in range(5):
 
 s = ""
 inp = "t"
-for i in equation(encode(tokenise(inp)), 10):
+for i in equation(encode(tokenise(inp)), 20):
     newtoken = [v.val for v in i]
     s += token_list[argmax(newtoken)]
 print(inp + s)
@@ -47,9 +47,9 @@ print(inp + s)
 # it does in fact work but just running this alone took around 30s
 # i guess this is far as i get so i wont bother cleaning up the rest of the code
 # $ python grad_rnn.py
-# 7.166897264189406
-# 4.211033348195654
-# 2.5267478590885726
-# 1.4316136964948274
-# 0.8518770961903246
-# testthingyi
+# 5.943790499435092
+# 3.8798026913376256
+# 2.452456681163106
+# 1.4012119955988023
+# 0.8083029989175551
+# thingyngyngyngyjhingy

@@ -222,11 +222,11 @@ def NLLLoss(guess, truth, multi=False):
         if multi:
             for g, t in zip(g, t):
                 prob_correct = g[t]
-                sum += prob_correct    
+                sum += prob_correct
         else:
             prob_correct = g[t]
             sum += prob_correct
-    loss = -sum / len(guess)
+    loss = -sum / (len(guess) * len(guess[0]) if multi else 1)
     loss.backward(1)
     return loss.val
 
